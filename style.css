@@ -1,10 +1,17 @@
 /* Images created by: https://unsplash.com/@pawel_czerwinski */
 
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+
+
+
 html {
   box-sizing: border-box;
 }
 
 body {
+  font-family: 'Courier Prime', monospace;
   margin: 0;
   min-height: 100vh;
   background: #c9ced3;
@@ -17,11 +24,35 @@ body {
 
 
 
+.player-container {
+  height: 500px;
+  width: 400px;
+  background: #e7edf3;
+  border-radius: 30px;
+
+  /* shadow properties: horizontal vertical blur spread color(rgba)*/
+  box-shadow: 0 15px 50px 10px rgba(0,0,0, 0.2);
+}
+
+
+
+
 .img-container {
+  height: 300px;
+  width: 300px;
 
   position: relative;
   top: -50px;
   left: 50px;
+}
+
+.img-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  /* This property allows image to fill into the space without distorting its quality */
+  object-fit: cover;
+  box-shadow: 0 5px 30px 10px rgba(0,0,0, 0.5);
 }
 
 
@@ -53,16 +84,21 @@ h3 {
   border-radius: 5px;
   height: 100%;
   /* change this to show progress */
-  width: 66%;
+  width: 0%;
   transition: width 0.1s linear;
 }
 
 .duration-wrapper {
+  width: 22rem;
   position: relative;
   top: -25px;
   display: flex;
   justify-content: space-between;
+  
 }
+
+
+
 
 /* Controls */
 .player-controls {
@@ -76,9 +112,18 @@ h3 {
   font-size: 30px;
   color: rgb(129, 129, 129);
   margin-right: 30px;
+  cursor: pointer;
+
+  /* this is to prevent a user from selecting it like a font. Icons act like fonts */
+  user-select: none;
 
 }
 
+
+.fas:hover {
+  filter: brightness(80%);
+  color: maroon;
+}
 
 
 .main-button {
@@ -89,7 +134,9 @@ h3 {
 
 /* Media Query: iPhone (Vertical) */
 @media screen and (max-width: 376px) {
-
+  .player-container {
+    width: 95vw;
+  }
 
   .img-container {
     left: 29px;

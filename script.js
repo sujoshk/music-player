@@ -68,6 +68,10 @@ function playSong() {
     music.play();
 }
 
+
+
+
+
 // Pause 
 
 function pauseSong() {
@@ -86,6 +90,7 @@ playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong() ))
 
 // Update DOM
 function loadSong(song) {
+    console.log(song);
     title.textContent = song.displayName;
     artist.textContent = song.artist;
     music.src = `music/${song.name}.mp3`;
@@ -118,11 +123,11 @@ function prevSong() {
 // Next Song
 function nextSong() {
     songIndex++;
-    if(songIndex > songs.lenth-1) {
+    if(songIndex > songs.length-1) {
         songIndex = 0;
         playSong();
     }
-    
+
     loadSong(songs[songIndex]);
     playSong();
 }

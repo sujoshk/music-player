@@ -152,12 +152,18 @@ function updateProgressBar(e) {
             durationSeconds = `0${durationSeconds}`
         }
 
+        
+
 
 
         // Delay switching duration element to avoid NaN
         if(durationSeconds) {
             durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
         }
+
+
+
+
 
            // Calculate the display for current
 
@@ -168,18 +174,7 @@ function updateProgressBar(e) {
             currentSeconds = `0${currentSeconds}`
         }
 
-        console.log('seconds' , currentSeconds)
         currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}`;
-
-
-
-
-
-
-
-
-
-
 
         
     }
@@ -187,8 +182,48 @@ function updateProgressBar(e) {
 
 
 
+// Set progress bar
+
+function setProgressBar(e) {
+    
+
+
+    // this refers to the element that receives the event
+    const width = this.clientWidth;
+    console.log('Width : ', width);
+
+    const clickX = e.offsetX;
+    console.log('clickX ', clickX);
+
+    const { duration } = music;
+    console.log(clickX / width);
+    console.log((clickX / width)*duration);
+
+
+    // currentTime is an attribute of the audio element in html. We are dynamically setting it to the position that is clicked on.
+    music.currentTime = (clickX / width)*duration;
+   
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
 // Event Listeners
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 
+music.addEventListener('ended', nextSong); 
+
+
 music.addEventListener('timeupdate', updateProgressBar);
+
+progressContainer.addEventListener('click', setProgressBar);
